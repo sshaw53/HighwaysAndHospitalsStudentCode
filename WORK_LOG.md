@@ -1,9 +1,10 @@
 Name: YOUR NAME HERE
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date    |    Time     |                                                                                                                                                                                                                                                                                           Update |
+|:--------|:-----------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Sept 10 | 5:40-6:10pm |                                                                                                                                                I tried to brainstorm on a whiteboard and convert it to comments on the file. Pretty confused and lost on how to get a good technique / strategy. |
+| Sept 10 |  9-9:30pm   | I tried to continue to brainstorm the topic and struggled to come up with a feasible approach. I'm trying to think through how to do it recursively and am struggling. I started getting an allergic reaction right before this so this isn't my best work because I am really not feeling well. |
+|         |             |                                                                                                                                                                                                                                                                                                  |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
