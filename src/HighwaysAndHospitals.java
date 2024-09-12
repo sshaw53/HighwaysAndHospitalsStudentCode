@@ -50,33 +50,54 @@ public class HighwaysAndHospitals {
         int currentCity;
         int node;
         boolean[] visited = new boolean[n + 1];
-        ArrayList[] clusters = new ArrayList[n + 1];
-        for (int i = 0; i < n + 1; i++) {
-            clusters[i] = new ArrayList<Integer>();
-        }
+        //ArrayList<Integer> myCluster = new ArrayList<Integer>();
+        ArrayList<ArrayList<Integer>> myClusters = new ArrayList<ArrayList<Integer>>();
 
         // Add the first node to the queue
+        myClusters.add(new ArrayList<Integer>());
         queue.add(1);
-        // While there are still nodes left in the queue
-        while (!queue.isEmpty()) {
-            // Remove it from the current queue
-            currentCity = queue.remove();
+        myClusters.get(myClusters.size() - 1).add(1);
+        visited[1] = true;
 
-            // Finding the possible future cities
-            for (int i = 0; i < cityConnections[currentCity].size(); i++) {
-                node = (int) cityConnections[currentCity].get(i);
+        // Once we find a cluster, try to find the next cluster of connections since they haven't been visited
+        for (int i = 1; i < n + 1; i++) {
+            if (!visited[i]) {
+                queue.add(i);
+                myClusters.get(myClusters.size() - 1).add(i);
+                visited[i] = true;
+                // While there are still nodes left in the queue
+                while (!queue.isEmpty()) {
+                    // Remove it from the current queue
+                    currentCity = queue.remove();
 
-                // If the node hasn't been visited, add it to the back of the queue and save cluster spot (and mark as visited)
-                if (!visited[node]) {
-                    clusters[currentCity].add(node);
-                    queue.add(node);
-                    visited[node] = true;
+                    // Finding the possible future cities through the cityConnections (possible roads)
+                    for (int j = 0; j < cityConnections[currentCity].size(); j++) {
+                        node = (int) cityConnections[currentCity].get(j);
+
+                        // If the node hasn't been visited, add it to the back of the queue, save to cluster, and mark as visited
+                        if (!visited[node]) {
+                            myClusters.get(myClusters.size() - 1).add(node);
+                            queue.add(node);
+                            visited[node] = true;
+                        }
+                    }
+                }
+                myClusters.add(new ArrayList<Integer>());
+            }
+        }
+
+        for (int i = 0; i < myClusters.size(); i++) {
+            if (!myClusters.get(i).isEmpty()) {
+                if (myClusters.get(i).size() == 1) {
+                    price += hospitalCost1;
+                }
+                else {
+                    price += highwayCost * (myClusters.get(i).size() - 1) + hospitalCost1;
                 }
             }
         }
 
-        System.out.print(clusters);
-
+        return price;
 
         // make an array of possible roads - how can we do that and is it beneficial?
             // would it make sense to do this or does it just take up space bc there can be multiple roads from a city
@@ -85,9 +106,5 @@ public class HighwaysAndHospitals {
         // create an array that notes for the cost in each version ? or the cost it takes to get to the next node / city
         // repeats until there is access to hospitals for everyone - recursion? breadth first search?
             // ideally aim for the smallest price
-
-
-
-        return 0;
     }
 }
