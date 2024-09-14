@@ -22,12 +22,29 @@ public class HighwaysAndHospitals {
 
     public static long cost(int n, int hospitalCost, int highwayCost, int cities[][]) {
         long hospitalCost1 = (long) hospitalCost;
-        long price = 0;
         // If hospitalCost is <= highwayCost, just put all hospitals down
         if (hospitalCost1 <= highwayCost) {
             return hospitalCost1 * n;
         }
 
+        int c = 0;
+        int[] roots = new int[n + 1];
+
+        // For every edge
+        for (int i = 0; i < cities.length; i++) {
+            boolean union = HighwaysAndHospitals.find(cities[i][0], cities[i][1], roots);
+        }
+            // Find the roots of both vertices
+            // If they are not the same
+                // Make the 1st vertex the root of the 2nd
+        for (int i = 0; i < roots.length; i++) {
+            if (roots[i] == 0) {
+                c += 1;
+            }
+        }
+        return c * hospitalCost1 + (n-c) * highwayCost;
+
+        /*
         // If highwayCost > hospitalCost, there's a different approach
             // We need to find the number of clusters possible. Place 1 hospital at a city and add all highways to it
             // also seen as # cities per cluster - 1
@@ -97,14 +114,21 @@ public class HighwaysAndHospitals {
             }
         }
 
-        return price;
+        */
+    }
 
-        // make an array of possible roads - how can we do that and is it beneficial?
-            // would it make sense to do this or does it just take up space bc there can be multiple roads from a city
-        // main idea: create a map - nodes are cities, edges are highways
-        // start at a city, choose either to create a highway (if possible) or choose to start at a new city
-        // create an array that notes for the cost in each version ? or the cost it takes to get to the next node / city
-        // repeats until there is access to hospitals for everyone - recursion? breadth first search?
-            // ideally aim for the smallest price
+    public boolean find(int x, int y, int[] roots) {
+        int i = x;
+        int j = y;
+        while (roots[i] > 0) {
+            i = roots[i];
+        }
+        while (roots[j] > 0) {
+            j = roots[j];
+        }
+        if ((i == 0 && j == 0) || i != j) {
+            roots[j] = i;
+        }
+        return i != j;
     }
 }
