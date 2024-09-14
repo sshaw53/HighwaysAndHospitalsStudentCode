@@ -39,7 +39,6 @@ public class HighwaysAndHospitals {
             if (roots[i] <= 0) {
                 c += 1;
             }
-            System.out.print(roots[i]);
         }
 
         return c * hospitalCost1 + (n-c) * highwayCost;
