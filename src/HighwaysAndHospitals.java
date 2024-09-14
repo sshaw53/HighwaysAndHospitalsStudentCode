@@ -32,11 +32,11 @@ public class HighwaysAndHospitals {
 
         // For every edge
         for (int i = 0; i < cities.length; i++) {
-            boolean union = find(cities[i][0], cities[i][1], roots);
+            boolean union = fastfind(cities[i][0], cities[i][1], roots);
         }
 
         for (int i = 1; i < roots.length; i++) {
-            if (roots[i] == 0) {
+            if (roots[i] <= 0) {
                 c += 1;
             }
             System.out.print(roots[i]);
