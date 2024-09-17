@@ -1,4 +1,4 @@
-Name: YOUR NAME HERE
+Name: SIERRA SHAW
 
 | Date    |     Time      |                                                                                                                                                                                                                                                                                           Update |
 |:--------|:-------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
@@ -10,7 +10,7 @@ Name: YOUR NAME HERE
 | Sept 14 |   3-3:40pm    |                                          I read through the reading and am trying to figure out how to correctly implement the union find algorithm. I initially copied down what the reading said and quickly realized that I dont think its fully applicable so I'm trying to figure that out. |
 | Sept 14 |  3:45-4:15pm  |                                                                                                           Figured out how to get the find() function to work correctly and passed all tests, but now trying to figure out how to make fastfind() work correctly / how to make it more efficient. |
 | Sept 14 |  4:15-4:20pm  |                                                                                                                                                                                            Figured out fastfind() right after. Next goal would be to figure out how to use halving or splitting. |
-|         |               |                                                                                                                                                                                                                                                                                                  |
+| Sept 16 |  9:15-9:30pm  |                                                                    I spent some time looking at some conceptual YouTube videos and rereading the reading handout to try to grasp how much more efficient it can become.. now trying to think about making fastfind() more efficient if possible. |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.

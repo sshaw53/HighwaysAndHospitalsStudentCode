@@ -62,6 +62,7 @@ public class HighwaysAndHospitals {
         return i != j;
     }
 
+    // Should we be traversing each time to reset the nodes? - seems a lot more time consuming..
     public static boolean fastfind(int x, int y, int[] roots) {
         int i = x;
         int j = y;
