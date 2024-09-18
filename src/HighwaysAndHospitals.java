@@ -67,7 +67,7 @@ public class HighwaysAndHospitals {
             roots[t] = j;
         }
 
-        // Weight compression - If the roots aren't the same, check to see whether the order of the trees are
+        // Weight balancing - If the roots aren't the same, check to see whether the order of the trees are
         // equivalent, take the bigger tree (order) and make it the root of the smaller tree (order)
         if (i != j) {
             if (roots[j] < roots[i]) {
