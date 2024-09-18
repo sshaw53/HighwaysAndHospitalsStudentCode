@@ -30,11 +30,12 @@ public class HighwaysAndHospitals {
         int c = 0;
         int[] roots = new int[n + 1];
 
-        // For every edge
+        // For every edge, use union find with path compression to set the trees up and fill the roots map
         for (int i = 0; i < cities.length; i++) {
-            boolean union = fastfind(cities[i][0], cities[i][1], roots);
+            fastfind(cities[i][0], cities[i][1], roots);
         }
 
+        // The number of negative values or values of 0 represent the number of clusters
         for (int i = 1; i < roots.length; i++) {
             if (roots[i] <= 0) {
                 c += 1;
@@ -44,26 +45,7 @@ public class HighwaysAndHospitals {
         return c * hospitalCost1 + (n-c) * highwayCost;
     }
 
-    public static boolean find(int x, int y, int[] roots) {
-        int i = x;
-        int j = y;
-
-        // Find the roots of both vertices
-        while (roots[i] > 0) {
-            i = roots[i];
-        }
-        while (roots[j] > 0) {
-            j = roots[j];
-        }
-        // If the roots aren't the same, make the 1st vertex the root of the 2nd
-        if (i != j) {
-            roots[j] = i;
-        }
-        return i != j;
-    }
-
-    // Should we be traversing each time to reset the nodes? - seems a lot more time consuming..
-    public static boolean fastfind(int x, int y, int[] roots) {
+    public static void fastfind(int x, int y, int[] roots) {
         int i = x;
         int j = y;
         int t = 0;
@@ -72,6 +54,7 @@ public class HighwaysAndHospitals {
         while (roots[i] > 0) { i = roots[i]; }
         while (roots[j] > 0) { j = roots[j]; }
 
+        // Uses path compression to set the leaves of the tree to attach directly to the root
         while (roots[x] > 0) {
             t = x;
             x = roots[x];
@@ -83,17 +66,19 @@ public class HighwaysAndHospitals {
             y = roots[y];
             roots[t] = j;
         }
-        // If the roots aren't the same, make the 1st vertex the root of the 2nd
+
+        // Weight compression - If the roots aren't the same, check to see whether the order of the trees are
+        // equivalent, take the bigger tree (order) and make it the root of the smaller tree (order)
         if (i != j) {
             if (roots[j] < roots[i]) {
                 roots[j] = roots[j] + roots[i] - 1;
                 roots[i] = j;
             }
+            // Otherwise, just make the first tree the root of the second
             else {
                 roots[i] = roots[i] + roots[j] - 1;
                 roots[j] = i;
             }
         }
-        return i != j;
     }
 }

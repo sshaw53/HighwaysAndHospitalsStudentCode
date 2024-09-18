@@ -11,6 +11,7 @@ Name: SIERRA SHAW
 | Sept 14 |  3:45-4:15pm  |                                                                                                           Figured out how to get the find() function to work correctly and passed all tests, but now trying to figure out how to make fastfind() work correctly / how to make it more efficient. |
 | Sept 14 |  4:15-4:20pm  |                                                                                                                                                                                            Figured out fastfind() right after. Next goal would be to figure out how to use halving or splitting. |
 | Sept 16 |  9:15-9:30pm  |                                                                    I spent some time looking at some conceptual YouTube videos and rereading the reading handout to try to grasp how much more efficient it can become.. now trying to think about making fastfind() more efficient if possible. |
+| Sept 18 |  1:15-1:30pm  |                                                                                                                                                                                 I realized that fastfind() does path compression and weight balancing, so I completed it! Added some pseudocode! |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
