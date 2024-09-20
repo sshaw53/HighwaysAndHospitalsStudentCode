@@ -25,7 +25,7 @@ public class HighwaysAndHospitals {
         int c = 0;
         int[] roots = new int[n + 1];
 
-        // For every edge, use union find with path compression to set the trees up and fill the roots map
+        // For every edge, use union find with path compression and weight balancing to set the trees up and fill the roots map
         for (int i = 0; i < cities.length; i++) {
             fastfind(cities[i][0], cities[i][1], roots);
         }
